@@ -8,26 +8,32 @@ let bookCollection = [];
 let newBook;
 let formData;
 let bookCollectionHtml;
+class Book {
+  constructor(title, author) {
+    this.title = title;
+    this.author = author;
+  }
 
-const addBookToStorage = () => {
-  const str = JSON.stringify(bookCollection);
-  localStorage.setItem('storedBookData', str);
-};
+  static addBookToStorage() {
+    const str = JSON.stringify(bookCollection);
+    localStorage.setItem('storedBookData', str);
+  }
 
-const deleteBook = (id) => {
-  const itemToDelete = bookCollection[id];
+  static deleteBook(id) {
+    const itemToDelete = bookCollection[id];
 
-  bookCollection = bookCollection.filter((item) => item !== itemToDelete);
-  addBookToStorage();
-  // eslint-disable-next-line no-use-before-define
-  showBooks();
-};
+    bookCollection = bookCollection.filter((item) => item !== itemToDelete);
+  }
+}
 
 const addBtnRemoveEvent = () => {
   document.querySelectorAll('.delete_btn').forEach((button) => button.addEventListener('click', (event) => {
     event.preventDefault();
     const { id } = button;
-    deleteBook(id);
+    Book.deleteBook(id);
+    Book.addBookToStorage();
+    // eslint-disable-next-line no-use-before-define
+    showBooks();
   }));
 };
 
@@ -37,11 +43,11 @@ const showBooks = () => {
   allBooks.innerHTML = '';
   formData.forEach((book, index) => {
     bookCollectionHtml = document.createElement('div');
+    bookCollectionHtml.className = 'book-item';
     bookCollectionHtml.innerHTML = `
-      <h3 class="book-title">${book.title}</h3>
-      <h3 class="book-author">${book.author}</h3>
+
+      <h3 class="book-title"><span>"${book.title}" by ${book.author}</span></h3>
       <button class="delete_btn" id="${index}">Remove</button>
-      <hr>
     `;
     allBooks.appendChild(bookCollectionHtml);
   });
@@ -51,12 +57,11 @@ const showBooks = () => {
 
 addForm.addEventListener('submit', (event) => {
   event.preventDefault();
-  newBook = {
-    title: addTitle.value,
-    author: addAuthor.value,
-  };
+  newBook = new Book(addTitle.value, addAuthor.value);
+
   bookCollection.push(newBook);
-  addBookToStorage();
+
+  Book.addBookToStorage();
 
   showBooks();
 });
