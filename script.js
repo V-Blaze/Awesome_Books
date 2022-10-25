@@ -8,34 +8,34 @@ let bookCollection = [];
 let newBook;
 let formData;
 let bookCollectionHtml;
-
 class Book {
 	constructor(title, author) {
 		this.title = title;
 		this.author = author;
 	}
 
-	addBookToStorage() {
+	static addBookToStorage() {
 		const str = JSON.stringify(bookCollection);
 		localStorage.setItem('storedBookData', str);
 	}
+
+	static deleteBook(id) {
+		const itemToDelete = bookCollection[id];
+	
+		bookCollection = bookCollection.filter((item) => item !== itemToDelete);
+	};
+
 }
-
-const deleteBook = (id) => {
-	const itemToDelete = bookCollection[id];
-
-	bookCollection = bookCollection.filter((item) => item !== itemToDelete);
-	addBookToStorage();
-	// eslint-disable-next-line no-use-before-define
-	showBooks();
-};
 
 const addBtnRemoveEvent = () => {
 	document.querySelectorAll('.delete_btn').forEach((button) =>
 		button.addEventListener('click', (event) => {
 			event.preventDefault();
 			const { id } = button;
-			deleteBook(id);
+			Book.deleteBook(id);
+			Book.addBookToStorage();
+			// eslint-disable-next-line no-use-before-define
+			showBooks();
 		})
 	);
 };
@@ -64,7 +64,7 @@ addForm.addEventListener('submit', (event) => {
 
 	bookCollection.push(newBook);
 
-	newBook.addBookToStorage();
+	Book.addBookToStorage();
 
 	showBooks();
 });
