@@ -15,14 +15,14 @@ body {
 main {
   display: flex;
   flex-direction: column;
-  width: 25%;
+  width: 50%;
 }
 
 .books {
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin-top: 10%;
+  margin-top: 5%;
   border: 2px solid black;
 }
 
@@ -38,7 +38,7 @@ main {
 .form-title {
   display: flex;
   justify-content: center;
-  font-size: 22px;
+  font-size: 30px;
 }
 
 #addBook {
@@ -50,7 +50,8 @@ main {
 }
 
 .main-title {
-  margin-top: 50%;
+  align-self: center;
+  margin-top: 5%;
 }
 
 .book-title {
@@ -70,14 +71,7 @@ button {
   border: 2px solid black;
   border-radius: 5px;
   box-shadow: 3px 3px;
-}
-
-.hr {
-  align-self: center;
-  margin: 30px 0;
-  width: 50%;
-  background-color: black;
-  height: 3px;
+  cursor: pointer;
 }
 
 button:hover {
@@ -136,4 +130,40 @@ footer {
   justify-content: center;
   align-items: center;
   color: white;
+}
+
+.formSection {
+  display: flex;
+  justify-content: center;
+  width: 35%;
+}
+
+.contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact-title {
+  font-size: 30px;
+  margin: 40px 0;
+}
+
+.contact-content {
+  margin: 10px 0;
+}
+
+.contact-list {
+  margin: 4px 0 5px 15%;
+  width: 80%;
+  height: 100%;
+  line-height: 24px;
+}
+
+.time-box {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  margin-right: 5%;
+  padding-top: 10px;
 }
