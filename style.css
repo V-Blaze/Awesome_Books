@@ -9,21 +9,66 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100%;
   width: 100%;
 }
 
-main {
+nav {
   display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+  background-color: gray;
+  height: 40px;
+  align-items: center;
+}
+
+nav ul {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  gap: 2rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+.logo {
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.list {
+  color: white;
+}
+
+.list:hover {
+  color: orangered;
+  font-weight: bold;
+}
+
+.time-box {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  margin-right: 5%;
+  padding-top: 10px;
+}
+
+.main {
+  display: flex;
+  display: none;
   flex-direction: column;
-  width: 25%;
+  width: 50%;
+  margin-top: 5%;
 }
 
 .books {
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin-top: 10%;
+  margin-top: 5%;
   border: 2px solid black;
 }
 
@@ -36,10 +81,19 @@ main {
   padding: 10px 10px;
 }
 
+.formSection {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  margin-top: 5%;
+  width: 100%;
+}
+
 .form-title {
   display: flex;
   justify-content: center;
-  font-size: 22px;
+  font-size: 30px;
+  margin-bottom: 4%;
 }
 
 #addBook {
@@ -47,11 +101,20 @@ main {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  width: 50%;
+  width: 30%;
+  margin: 0 auto;
+}
+
+#addBook input {
+  height: 2rem;
+  border-radius: 5px;
 }
 
 .main-title {
-  margin-top: 50%;
+  align-self: center;
+
+  /* margin-top: 5%; */
+  text-align: center;
 }
 
 .book-title {
@@ -71,14 +134,7 @@ button {
   border: 2px solid black;
   border-radius: 5px;
   box-shadow: 3px 3px;
-}
-
-.hr {
-  align-self: center;
-  margin: 30px 0;
-  width: 50%;
-  background-color: black;
-  height: 3px;
+  cursor: pointer;
 }
 
 button:hover {
@@ -87,4 +143,43 @@ button:hover {
   box-shadow: 3px 3px red;
   transform: scale(1.15);
   transition: 0.5s;
+}
+
+.contact {
+  flex-direction: column;
+  align-items: center;
+  display: none;
+  margin-top: 5%;
+}
+
+.contact-title {
+  font-size: 30px;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.contact-content {
+  margin: 10px 0;
+  margin-left: 15px;
+}
+
+.contact-list {
+  margin: 4px 0 5px 10%;
+  width: 100%;
+  height: 100%;
+  line-height: 24px;
+}
+
+footer {
+  text-align: center;
+  padding: 5px;
+  width: 100%;
+  background-color: gray;
+  bottom: 0;
+  position: fixed;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
 }
